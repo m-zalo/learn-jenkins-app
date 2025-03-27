@@ -25,6 +25,16 @@ pipeline {
                 '''
             }
         }
+
+        stage('E2E'){
+            steps {
+                sh'''
+                    npm install -g serve
+                    serve -s build
+                '''
+            }
+        }
+
     }
     post {
         always {
