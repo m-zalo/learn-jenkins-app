@@ -49,6 +49,7 @@ pipeline {
             sh '''
                 npm install netlify-cli -g
                 netlify status
+                netlify deploy --dir=build --prod
             '''
         }
     }
