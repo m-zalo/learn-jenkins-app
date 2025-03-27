@@ -25,7 +25,7 @@ pipeline {
                 '''
             }
         }
-
+/*
         stage('E2E'){
             steps {
                 sh'''
@@ -37,11 +37,19 @@ pipeline {
                 '''
             }
         }
+*/
+
+    stage('deploy'){
+        steps {
+            npm install netlify-cli -g
+            netlify --version
+        }
+    }
 
     }
     post {
         always {
-            junit 'test-results/junit.xml'
+            junit 'jest-results/junit.xml'
         }
     }
 }
