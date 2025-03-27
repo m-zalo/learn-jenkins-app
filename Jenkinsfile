@@ -12,7 +12,7 @@ pipeline {
                     node --version
                     npm --version
                     npm ci
-                    npm build run
+                    npm run build
                 '''
             }
         }
