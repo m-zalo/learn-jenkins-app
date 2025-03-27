@@ -6,14 +6,27 @@ pipeline {
     }
     
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
-                echo 'Hello World'
                 sh '''
-                    whoami
+                    node -- version
                     npm --version
+                    npm ci
+                    npm build run
                 '''
             }
+        }
+    }
+
+    post {
+        always {
+
+        }
+        success {
+
+        }
+        failure {
+
         }
     }
 }
