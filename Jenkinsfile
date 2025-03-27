@@ -6,6 +6,8 @@ pipeline {
     }
     
     stages {
+        cleanWS()
+        
         stage('Build') {
             steps {
                 sh '''
@@ -19,7 +21,9 @@ pipeline {
 
         stage('Test'){
             steps {
-                test -f /build/index.html
+                sh'''
+                    test -f /build/index.html
+                '''
             }
         }
     }
