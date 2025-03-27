@@ -5,9 +5,7 @@ pipeline {
         nodejs('23.10')
     }
     
-    stages {
-        cleanWS()
-        
+    stages {        
         stage('Build') {
             steps {
                 sh '''
