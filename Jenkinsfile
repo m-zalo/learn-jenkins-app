@@ -16,5 +16,11 @@ pipeline {
                 '''
             }
         }
+
+        stage('Test'){
+            steps {
+                test -f /build/index.html
+            }
+        }
     }
 }
