@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                    node -- version
+                    node --version
                     npm --version
                     npm ci
                     npm build run
