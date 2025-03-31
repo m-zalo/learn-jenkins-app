@@ -45,6 +45,9 @@ pipeline {
 */
 
     stage('stage'){
+        environment {
+            STAGING_URL = 'UNDEFINED_STAGING_URL'
+        }
         steps {
             sh '''
                 npm install netlify-cli node-jq -g
@@ -52,7 +55,8 @@ pipeline {
                 netlify status
                 echo "Deploy to Staging"
                 netlify deploy --dir=build --json > deploy-output.json
-                node-jq -r '.deploy_url' deploy-output.json
+                STAGING_URL = $(node-jq -r '.deploy_url' deploy-output.json)
+                echo $STAGING_URL
             '''
         }
     }
