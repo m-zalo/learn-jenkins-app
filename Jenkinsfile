@@ -44,11 +44,25 @@ pipeline {
         }
 */
 
+    stage('stage'){
+        steps {
+            sh '''
+                npm install netlify-cli -g
+                netlify --version
+                netlify status
+                echo "Deploy to Staging"
+                netlify deploy --dir=build
+            '''
+        }
+    }
+
     stage('deploy'){
         steps {
             sh '''
                 npm install netlify-cli -g
+                netlify --version
                 netlify status
+                echo " Deploy to Production"
                 netlify deploy --dir=build --prod
             '''
         }
