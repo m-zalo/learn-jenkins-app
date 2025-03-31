@@ -47,11 +47,12 @@ pipeline {
     stage('stage'){
         steps {
             sh '''
-                npm install netlify-cli -g
+                npm install netlify-cli node-jq -g
                 netlify --version
                 netlify status
                 echo "Deploy to Staging"
-                netlify deploy --dir=build
+                netlify deploy --dir=build --json > deploy-output.json
+                node-jq -r '.deploy_url' deploy-output.json
             '''
         }
     }
