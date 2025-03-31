@@ -56,6 +56,14 @@ pipeline {
         }
     }
 
+    stage('approval') {
+        steps {
+            timeout(time: 10, unit: 'MINUTES') {
+                input message: 'Deploy to Production?', ok: 'Deploy'
+            }
+        }
+    }
+
     stage('deploy'){
         steps {
             sh '''
