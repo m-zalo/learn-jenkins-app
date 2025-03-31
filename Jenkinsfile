@@ -55,7 +55,7 @@ pipeline {
                 netlify status
                 echo "Deploy to Staging"
                 netlify deploy --dir=build --json > deploy-output.json
-                STAGING_URL = $(node-jq -r '.deploy_url' deploy-output.json)
+                STAGING_URL=$(node-jq -r '.deploy_url' deploy-output.json)
                 echo $STAGING_URL
             '''
         }
